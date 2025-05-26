@@ -417,7 +417,7 @@
             }
         });
     </script>
-       <script src="https://accounts.google.com/gsi/client" async defer></script>
+          <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
         let userSignedIn = false;
 
@@ -462,13 +462,13 @@
             const ctaDiv = document.querySelector('.cta');
             if (ctaDiv) {
                 ctaDiv.style.display = 'flex';
-               ctaDiv.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
-                    <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
-                </div>
-            `;
-                            ctaDiv.style.cursor = 'default';
+                ctaDiv.innerHTML = `
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
+                                            <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
+                                        </div>
+                                    `;
+                ctaDiv.style.cursor = 'default';
             }
             const signOutBtn = document.getElementById('signOutBtn').addEventListener('click', signOut);
             if (signOutBtn) {
@@ -481,24 +481,24 @@
             const signedInCookie = getCookie('userSignedIn');
             const profileCookie = getCookie('userProfile');
 
-           if (signedInCookie === 'true' && profileCookie) {
-    userSignedIn = true;
-    const submitBtn = document.getElementById('submitBtn');
-    if (submitBtn) submitBtn.disabled = false;
+            if (signedInCookie === 'true' && profileCookie) {
+                userSignedIn = true;
+                const submitBtn = document.getElementById('submitBtn');
+                if (submitBtn) submitBtn.disabled = false;
 
-    const userObject = JSON.parse(profileCookie);
-    const ctaDiv = document.querySelector('.cta');
-    if (ctaDiv) {
-        ctaDiv.style.display = 'flex';
-        ctaDiv.style.cursor = 'default';
-        ctaDiv.innerHTML = `
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
-                <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
-            </div>
-        `;
-        document.getElementById('signOutBtn').addEventListener('click', signOut);
-    }
+                const userObject = JSON.parse(profileCookie);
+                const ctaDiv = document.querySelector('.cta');
+                if (ctaDiv) {
+                    ctaDiv.style.display = 'flex';
+                    ctaDiv.style.cursor = 'default';
+                    ctaDiv.innerHTML = `
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
+                                        <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
+                                    </div>
+                                `;
+                    document.getElementById('signOutBtn').addEventListener('click', signOut);
+                }
             } else {
                 // Initialize Google Sign-In button
                 google.accounts.id.initialize({
@@ -541,29 +541,29 @@
             }
         };
         function signOut() {
-    // Clear cookies
-    setCookie('userSignedIn', '', -1);
-    setCookie('userProfile', '', -1);
+            // Clear cookies
+            setCookie('userSignedIn', '', -1);
+            setCookie('userProfile', '', -1);
 
-    userSignedIn = false;
+            userSignedIn = false;
 
-    // Reset UI
-    const ctaDiv = document.querySelector('.cta');
-    if (ctaDiv) {
-        ctaDiv.innerHTML = ''; // Clear current user image or button
-        google.accounts.id.renderButton(ctaDiv, {
-            theme: "outline",
-            shape: "icon",
-            size: "large"
-        });
-    }
+            // Reset UI
+            const ctaDiv = document.querySelector('.cta');
+            if (ctaDiv) {
+                ctaDiv.innerHTML = ''; // Clear current user image or button
+                google.accounts.id.renderButton(ctaDiv, {
+                    theme: "outline",
+                    shape: "icon",
+                    size: "large"
+                });
+            }
 
-    const submitBtn = document.getElementById('submitBtn');
-    if (submitBtn) submitBtn.disabled = true;
+            const submitBtn = document.getElementById('submitBtn');
+            if (submitBtn) submitBtn.disabled = true;
 
-    const signOutBtn = document.getElementById('signOutBtn');
-    if (signOutBtn) signOutBtn.style.display = 'none';
-}
+            const signOutBtn = document.getElementById('signOutBtn');
+            if (signOutBtn) signOutBtn.style.display = 'none';
+        }
 
     </script>
 </body>

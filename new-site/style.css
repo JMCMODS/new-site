@@ -128,25 +128,30 @@ h2 {
 /*Footer*/
 footer {
     background-color: #111;
+    z-index: 999;
 }
 .footerContainer {
     width: 100%;
     padding: 20px 30px 0px;
+    z-index: 999;
 }
 .socialIcons {
     display: flex;
     justify-content: center;
+    z-index: 999;
 }
-.socialIcons a {
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 50%;
-}
-.socialIcons a i {
-    font-size: 2em;
-    color: white;
-    opacity: 0.9;
-}
+    .socialIcons a {
+        text-decoration: none;
+        padding: 10px;
+        border-radius: 50%;
+        z-index: 999;
+    }
+        .socialIcons a i {
+            font-size: 2em;
+            color: white;
+            opacity: 0.9;
+            z-index: 999;
+        }
 .socialIcons a:hover {
     background-color: #111;
     transition: 0.5s;
@@ -162,10 +167,12 @@ footer {
     background-color: #000;
     padding: 20px;
     text-align: center;
+    z-index: 999;
 }
-.footerBottom p {
-    color: white;
-}
+    .footerBottom p {
+        color: white;
+        z-index: 999;
+    }
 .designer {
     opacity: 1;
     text-transform: uppercase;
@@ -173,6 +180,7 @@ footer {
     font-weight: 400;
     margin: 0px 3px;
     color: aqua;
+    z-index: 999;
 }
 @media (max-width: 700px) {
 .footerContainer{
@@ -183,6 +191,18 @@ footer {
     }  /*Footer*/
 }
 /*Footer*/
+#bg-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; /* Make sure video covers width */
+    min-height: 100%; /* Make sure video covers height */
+    width: auto;
+    height: auto;
+    z-index: 1; /* Behind other content */
+    background-size: cover;
+    object-fit: cover; /* Crop video to cover entire screen */
+}
 
 /*Index Middle Page*/
 .hero-section {
@@ -221,10 +241,10 @@ footer {
     border-radius: 10px;
     z-index: 11;
     position: absolute;
-    left: 10%;
     margin: 0 auto;
     box-sizing: border-box;
     word-wrap: break-word;
+    background: rgba(255,255,255,0.0727) !important;
 }
 
     .typing-container.hidden-background {
@@ -232,7 +252,7 @@ footer {
         backdrop-filter: none;
     }
     .typing-container.visible-background {
-        background: rgba(255,255,255,0.0727);
+        background: rgba(255,255,255,0.0727)!important;
         backdrop-filter: blur(10px);
     }
 .typing-container p {
