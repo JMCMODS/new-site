@@ -218,11 +218,11 @@
             if (ctaDiv) {
                 ctaDiv.style.display = 'flex';
                 ctaDiv.innerHTML = `
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
-                            <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
-                        </div>
-                    `;
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
+                                    <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
+                                </div>
+                            `;
                 ctaDiv.style.cursor = 'default';
             }
             const signOutBtn = document.getElementById('signOutBtn').addEventListener('click', signOut);
@@ -247,11 +247,11 @@
                     ctaDiv.style.display = 'flex';
                     ctaDiv.style.cursor = 'default';
                     ctaDiv.innerHTML = `
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
-                        <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
-                    </div>
-                `;
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
+                                <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
+                            </div>
+                        `;
                     document.getElementById('signOutBtn').addEventListener('click', signOut);
                 }
             } else {
@@ -324,34 +324,26 @@
 
 
     <script>
+        // Callback function called by the JSONP script
         function loadSuggestions(data) {
-            const list = document.getElementById("suggestionsList");
-
             if (data.status === "ok") {
-                if (data.suggestions.length === 0) {
-                    list.innerHTML = "<li>No suggestions submitted yet.</li>";
-                    return;
-                }
+                const list = document.getElementById('suggestionsList');
+                list.innerHTML = ''; // Clear existing list if any
 
-                list.innerHTML = "";
-                data.suggestions.forEach(s => {
-                    const li = document.createElement("li");
-                    li.innerHTML = `
-        <strong>${s.name}</strong> (${new Date(s.timestamp).toLocaleString()}):<br/>
-        <em>${s.suggestion}</em><br/>
-        <p>${s.message}</p>
-        <hr/>
-      `;
+                data.suggestions.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = `${item.timestamp} - ${item.name}: ${item.suggestion} (${item.message})`;
                     list.appendChild(li);
                 });
             } else {
-                list.innerHTML = `<li style="color:red;">Error loading suggestions: ${data.message}</li>`;
+                console.error('Error loading suggestions:', data.message);
             }
         }
     </script>
 
-    <!-- This loads the suggestions via JSONP -->
+    <!-- JSONP script tag loads data and calls loadSuggestions -->
     <script src="https://script.google.com/macros/s/AKfycbzLf7shgO6D-6xMwWaa4etvKn-TBB-jmq4xWc8tS4T3zJD5xbnI1sTRW2mV0bTvKayy/exec?callback=loadSuggestions"></script>
+
 
 </body>
 </html>
