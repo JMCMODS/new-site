@@ -217,13 +217,13 @@
             const ctaDiv = document.querySelector('.cta');
             if (ctaDiv) {
                 ctaDiv.style.display = 'flex';
-               ctaDiv.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
-                    <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
-                </div>
-            `;
-                            ctaDiv.style.cursor = 'default';
+                ctaDiv.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
+                        <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
+                    </div>
+                `;
+                ctaDiv.style.cursor = 'default';
             }
             const signOutBtn = document.getElementById('signOutBtn').addEventListener('click', signOut);
             if (signOutBtn) {
@@ -236,24 +236,24 @@
             const signedInCookie = getCookie('userSignedIn');
             const profileCookie = getCookie('userProfile');
 
-           if (signedInCookie === 'true' && profileCookie) {
-    userSignedIn = true;
-    const submitBtn = document.getElementById('submitBtn');
-    if (submitBtn) submitBtn.disabled = false;
+            if (signedInCookie === 'true' && profileCookie) {
+                userSignedIn = true;
+                const submitBtn = document.getElementById('submitBtn');
+                if (submitBtn) submitBtn.disabled = false;
 
-    const userObject = JSON.parse(profileCookie);
-    const ctaDiv = document.querySelector('.cta');
-    if (ctaDiv) {
-        ctaDiv.style.display = 'flex';
-        ctaDiv.style.cursor = 'default';
-        ctaDiv.innerHTML = `
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
-                <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
-            </div>
-        `;
-        document.getElementById('signOutBtn').addEventListener('click', signOut);
-    }
+                const userObject = JSON.parse(profileCookie);
+                const ctaDiv = document.querySelector('.cta');
+                if (ctaDiv) {
+                    ctaDiv.style.display = 'flex';
+                    ctaDiv.style.cursor = 'default';
+                    ctaDiv.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
+                    <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
+                </div>
+            `;
+                    document.getElementById('signOutBtn').addEventListener('click', signOut);
+                }
             } else {
                 // Initialize Google Sign-In button
                 google.accounts.id.initialize({
@@ -296,34 +296,62 @@
             }
         };
         function signOut() {
-    // Clear cookies
-    setCookie('userSignedIn', '', -1);
-    setCookie('userProfile', '', -1);
+            // Clear cookies
+            setCookie('userSignedIn', '', -1);
+            setCookie('userProfile', '', -1);
 
-    userSignedIn = false;
+            userSignedIn = false;
 
-    // Reset UI
-    const ctaDiv = document.querySelector('.cta');
-    if (ctaDiv) {
-        ctaDiv.innerHTML = ''; // Clear current user image or button
-        google.accounts.id.renderButton(ctaDiv, {
-            theme: "outline",
-            shape: "icon",
-            size: "large"
-        });
-    }
+            // Reset UI
+            const ctaDiv = document.querySelector('.cta');
+            if (ctaDiv) {
+                ctaDiv.innerHTML = ''; // Clear current user image or button
+                google.accounts.id.renderButton(ctaDiv, {
+                    theme: "outline",
+                    shape: "icon",
+                    size: "large"
+                });
+            }
 
-    const submitBtn = document.getElementById('submitBtn');
-    if (submitBtn) submitBtn.disabled = true;
+            const submitBtn = document.getElementById('submitBtn');
+            if (submitBtn) submitBtn.disabled = true;
 
-    const signOutBtn = document.getElementById('signOutBtn');
-    if (signOutBtn) signOutBtn.style.display = 'none';
-}
+            const signOutBtn = document.getElementById('signOutBtn');
+            if (signOutBtn) signOutBtn.style.display = 'none';
+        }
 
     </script>
 
 
+    <script>
+        function loadSuggestions(data) {
+            const list = document.getElementById("suggestionsList");
 
+            if (data.status === "ok") {
+                if (data.suggestions.length === 0) {
+                    list.innerHTML = "<li>No suggestions submitted yet.</li>";
+                    return;
+                }
+
+                list.innerHTML = ""; // clear existing
+                data.suggestions.forEach(s => {
+                    const li = document.createElement("li");
+                    li.innerHTML = `
+                        <strong>${s.name}</strong> (${new Date(s.timestamp).toLocaleString()}):<br/>
+                        <em>${s.suggestion}</em><br/>
+                        <p>${s.message}</p>
+                        <hr/>
+                    `;
+                    list.appendChild(li);
+                });
+            } else {
+                list.innerHTML = `<li style="color:red;">Error loading suggestions: ${data.message}</li>`;
+            }
+        }
+    </script>
+
+    <!-- This loads the suggestions via JSONP -->
+    <script src="https://script.google.com/macros/s/AKfycbzLf7shgO6D-6xMwWaa4etvKn-TBB-jmq4xWc8tS4T3zJD5xbnI1sTRW2mV0bTvKayy/exec"></script>
 
 </body>
 </html>
