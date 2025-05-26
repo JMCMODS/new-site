@@ -323,26 +323,6 @@
     </script>
 
 
-    <script>
-        // Callback function called by the JSONP script
-        function loadSuggestions(data) {
-            if (data.status === "ok") {
-                const list = document.getElementById('suggestionsList');
-                list.innerHTML = ''; // Clear existing list if any
-
-                data.suggestions.forEach(item => {
-                    const li = document.createElement('li');
-                    li.textContent = `${item.timestamp} - ${item.name}: ${item.suggestion} (${item.message})`;
-                    list.appendChild(li);
-                });
-            } else {
-                console.error('Error loading suggestions:', data.message);
-            }
-        }
-    </script>
-
-    <!-- JSONP script tag loads data and calls loadSuggestions -->
-    <script src="https://script.google.com/macros/s/AKfycbzLf7shgO6D-6xMwWaa4etvKn-TBB-jmq4xWc8tS4T3zJD5xbnI1sTRW2mV0bTvKayy/exec?callback=loadSuggestions"></script>
 
 
 </body>
