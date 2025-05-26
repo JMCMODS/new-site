@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Support - Project Santos RP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css"> <!-- Your global styles -->
+    <link rel="stylesheet" href="support.css"> <!-- Page-specific styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="bodyStaff">
+
+    <!-- Header -->
+    <header>
+        <img class="logo" src="images/logo.png" alt="logo" />
+        <nav>
+            <ul class="nav_links">
+                <li><a href="index.html"><i class="fas fa-home" style="margin-right: 8px;"></i>Home</a></li>
+                <li><a href="download.html"><i class="fas fa-download" style="margin-right: 8px;"></i>Download</a></li>
+                <li><a href="suggestions.html"><i class="fas fa-lightbulb" style="margin-right: 8px;"></i>Suggestions</a></li>
+                <li><a href="staff.html"><i class="fas fa-users" style="margin-right: 8px;"></i>The Team</a></li>
+                <li><a href="media.html"><i class="fas fa-photo-film" style="margin-right: 8px;"></i>Media</a></li>
+                <li><a href="support.html"><i class="fas fa-heart" style="margin-right: 8px;"></i>Support</a></li>
+            </ul>
+        </nav>
+        <div class="cta"></div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <section class="mob-header">
+        <nav>
+            <div class="mob-links" id="mobLinks">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                    <li><a href="download.html"><i class="fas fa-download"></i></a></li>
+                    <li><a href="suggestions.html"><i class="fas fa-lightbulb"></i></a></li>
+                    <li><a href="staff.html"><i class="fas fa-users"></i></a></li>
+                    <li><a href="media.html"><i class="fas fa-photo-film"></i></a></li>
+                    <li><a href="support.html"><i class="fas fa-heart"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+    <!-- Support Section -->
+    <main class="support-section">
+        <div class="support-content">
+            <h1>Say Thank You</h1>
+            <p>
+                Developing and maintaining PSRP takes a great deal of time, effort,<br>
+                and dedication to ensure a fun and stable experience.<br>
+                If you enjoy the work and want to show your support,<br>
+                please consider helping out through one of the options below.
+            </p>
+
+            <div class="support-buttons">
+                <a href="#" class="support-btn"><i class="fab fa-patreon"></i> Patreon</a>
+                <a href="#" class="support-btn"><i class="fab fa-paypal"></i> PayPal</a>
+                <a href="#" class="support-btn"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="#" class="support-btn"><i class="fab fa-discord"></i> Discord</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footerContainer">
+            <div class="socialIcons">
+                <a href=""><i class="fa-brands fa-discord"></i></a>
+                <a href=""><i class="fa-brands fa-tiktok"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+                <a href=""><i class="fa-brands fa-patreon"></i></a>
+            </div>
+        </div>
+        <div class="footerBottom">
+            <p>Copyright &copy;2025: Designed by <span class="designer">JMC MODS</span></p>
+        </div>
+    </footer>
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+        let userSignedIn = false;
+
+        // Set cookie helper (expires in days)
+        function setCookie(name, value, days) {
+            const expires = new Date(Date.now() + days * 864e5).toUTCString();
+            document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/';
+        }
+
+        // Get cookie helper
+        function getCookie(name) {
+            return document.cookie.split('; ').reduce((r, v) => {
+                const parts = v.split('=');
+                return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+            }, '');
+        }
+
+        // Google Sign-In callback
+        function handleCredentialResponse(response) {
+            console.log('Google sign-in response:', response);
+            const base64Url = response.credential.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(
+                atob(base64)
+                    .split('')
+                    .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+                    .join('')
+            );
+            const userObject = JSON.parse(jsonPayload);
+
+            userSignedIn = true;
+
+            // Save cookies for 7 days
+            setCookie('userSignedIn', 'true', 7);
+            setCookie('userProfile', JSON.stringify(userObject), 7);
+
+            // Enable submit button
+            const submitBtn = document.getElementById('submitBtn');
+            if (submitBtn) submitBtn.disabled = false;
+
+            // Show user pic in header cta div
+            const ctaDiv = document.querySelector('.cta');
+            if (ctaDiv) {
+                ctaDiv.style.display = 'flex';
+               ctaDiv.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
+                    <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
+                </div>
+            `;
+                            ctaDiv.style.cursor = 'default';
+            }
+            const signOutBtn = document.getElementById('signOutBtn').addEventListener('click', signOut);
+            if (signOutBtn) {
+                signOutBtn.style.display = 'inline-block';
+                signOutBtn.addEventListener('click', signOut);
+            }
+        }
+
+        window.onload = () => {
+            const signedInCookie = getCookie('userSignedIn');
+            const profileCookie = getCookie('userProfile');
+
+           if (signedInCookie === 'true' && profileCookie) {
+    userSignedIn = true;
+    const submitBtn = document.getElementById('submitBtn');
+    if (submitBtn) submitBtn.disabled = false;
+
+    const userObject = JSON.parse(profileCookie);
+    const ctaDiv = document.querySelector('.cta');
+    if (ctaDiv) {
+        ctaDiv.style.display = 'flex';
+        ctaDiv.style.cursor = 'default';
+        ctaDiv.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
+                <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
+            </div>
+        `;
+        document.getElementById('signOutBtn').addEventListener('click', signOut);
+    }
+            } else {
+                // Initialize Google Sign-In button
+                google.accounts.id.initialize({
+                    client_id: '387205003521-n7amkkkb0k1p6n3s46br9kglr027j9oj.apps.googleusercontent.com',  // Replace this!
+                    callback: handleCredentialResponse,
+                    auto_select: false
+                });
+
+                google.accounts.id.renderButton(
+                    document.querySelector('.cta'),
+                    {
+                        theme: "outline",
+                        shape: "icon",
+                        size: "large"
+                    }
+                );
+
+                const submitBtn = document.getElementById('submitBtn');
+                if (submitBtn) submitBtn.disabled = true;
+            }
+
+            // Prevent submit if not signed in
+            const form = document.getElementById('suggestionForm');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    if (!userSignedIn) {
+                        e.preventDefault();
+                        alert('Please sign in to submit your suggestion.');
+                    }
+                });
+            }
+
+            // Character count for textarea
+            const messageInput = document.getElementById('message');
+            const charCount = document.getElementById('charCount');
+            if (messageInput && charCount) {
+                messageInput.addEventListener('input', () => {
+                    charCount.textContent = `${messageInput.value.length}/500 characters`;
+                });
+            }
+        };
+        function signOut() {
+    // Clear cookies
+    setCookie('userSignedIn', '', -1);
+    setCookie('userProfile', '', -1);
+
+    userSignedIn = false;
+
+    // Reset UI
+    const ctaDiv = document.querySelector('.cta');
+    if (ctaDiv) {
+        ctaDiv.innerHTML = ''; // Clear current user image or button
+        google.accounts.id.renderButton(ctaDiv, {
+            theme: "outline",
+            shape: "icon",
+            size: "large"
+        });
+    }
+
+    const submitBtn = document.getElementById('submitBtn');
+    if (submitBtn) submitBtn.disabled = true;
+
+    const signOutBtn = document.getElementById('signOutBtn');
+    if (signOutBtn) signOutBtn.style.display = 'none';
+}
+
+    </script>
+
+</body>
+</html>

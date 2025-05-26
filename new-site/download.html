@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Project Santos RP</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <img class="logo" src="images/logo.png" alt="logo" />
+        <nav>
+            <ul class="nav_links">
+                <li><a href="index.html"><i class="fas fa-home" style="margin-right: 8px;"></i>Home</a></li>
+                <li><a href="download.html"><i class="fas fa-download" style="margin-right: 8px;"></i>Download</a></li>
+                <li><a href="suggestions.html"><i class="fas fa-lightbulb" style="margin-right: 8px;"></i>Suggestions</a></li>
+                <li><a href="staff.html"><i class="fas fa-users" style="margin-right: 8px;"></i>The Team</a></li>
+                <li><a href="media.html"><i class="fas fa-photo-film" style="margin-right: 8px;"></i>Media</a></li>
+                <li><a href="support.html"><i class="fas fa-heart" style="margin-right: 8px;"></i>Support</a></li>
+            </ul>
+        </nav>
+        <div class="cta"></div>
+    </header>
+
+
+    <section class="mob-header">
+        <nav>
+            <div class="mob-links" id="mobLinks">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> </a></li>
+                    <li><a href="download.html"><i class="fas fa-download"></i></a></li>
+                    <li><a href="suggestions.html"><i class="fas fa-lightbulb"></i> </a></li>
+                    <li><a href="staff.html"><i class="fas fa-users"></i> </a></li>
+                    <li><a href="media.html"><i class="fas fa-photo-film"></i> </a></li>
+                    <li><a href="support.html"><i class="fas fa-heart"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+    <section class="download-section">
+        <div class="box-container">
+            <div class="left-column">
+                <div class="box half-box">
+                    <h2>REQUIREMENTS</h2>
+                    <p>Make sure to install the correct versions.</p>
+
+                    <div class="requirements-list">
+                        <div class="requirement-item">
+                            <div class="requirement-info">
+                                <span class="requirement-name">LEMON UI</span>
+                                <small class="requirement-desc">Version 2.1.2 Required</small>
+                            </div>
+                            <div class="buttons-group">
+                                <button class="requirement-btn">Download</button>
+                                <button class="requirement-btn secondary">Watch Tutorial</button>
+                            </div>
+                        </div>
+
+                        <div class="requirement-item">
+                            <div class="requirement-info">
+                                <span class="requirement-name">IFRUITADDON2</span>
+                                <small class="requirement-desc">Version 3.0.1 Required.</small>
+                            </div>
+                            <div class="buttons-group">
+                                <button class="requirement-btn">Download</button>
+                                <button class="requirement-btn secondary">Watch Tutorial</button>
+                            </div>
+                        </div>
+
+                        <div class="requirement-item">
+                            <div class="requirement-info">
+                                <span class="requirement-name">SCRIPTHOOKV</span>
+                                <small class="requirement-desc">Latest Version Required.</small>
+                            </div>
+                            <div class="buttons-group">
+                                <button class="requirement-btn">Download</button>
+                                <button class="requirement-btn secondary">Watch Tutorial</button>
+                            </div>
+                        </div>
+
+                        <div class="requirement-item">
+                            <div class="requirement-info">
+                                <span class="requirement-name">SCRIPTHOOKVDOTNET3</span>
+                                <small class="requirement-desc">Nightly Build Version v3.7.0 Required.</small>
+                            </div>
+                            <div class="buttons-group">
+                                <button class="requirement-btn">Download</button>
+                                <button class="requirement-btn secondary">Watch Tutorial</button>
+                            </div>
+                        </div>
+
+                        <div class="requirement-item">
+                            <div class="requirement-info">
+                                <span class="requirement-name">MP STUBS PATCH</span>
+                                <small class="requirement-desc">(Optional For MP Ped) Latest Version Required</small>
+                            </div>
+                            <div class="buttons-group">
+                                <button class="requirement-btn">Download</button>
+                                <button class="requirement-btn secondary">Watch Tutorial</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box half-box">
+                    <h2>DOWNLOAD & PATCHNOTES</h2>
+                    <p>Get the latest version.</p>
+                    <div class="version-text">
+                        <p>
+                            Latest Version: <span class="highlight">1.7</span><br>
+                            Released: <span class="highlight">11th May 2025</span>
+                        </p>
+                    </div>
+                    <div class="buttons-group-download">
+                        <button class="download-btn">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+
+                        <button class="download-btn secondary">
+                            <i class="fas fa-file-alt"></i> Patch Notes
+                        </button>
+                    </div>
+                    <h2><a href="support.html" class="help-link">Click Here To Get Help</a></h2>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="box full-box">
+                    <h2>INSTALLATION</h2>
+                    <p>
+                        Read the <span class="faq-link" onclick="openFAQ()">FAQ</span>.
+                    </p>
+
+                    <!-- FAQ Overlay -->
+                    <div id="faqOverlay" class="faq-overlay">
+                        <div class="faq-content">
+                            <span class="close-btn" onclick="closeFAQ()">&times;</span>
+                            <h2>Frequently Asked Questions</h2>
+                            <p><em>Q: Is PSRP compatible with GTA5 Enhanced?</em><br><strong>A:</strong> Not currently until we get SHVDN3 support for it.</p>
+                            <p><em>Q: I have white squares for my UI after install?</em><br><strong>A:</strong> Reinstall PART_2, Make sure to choose MODS folder.</p>
+                            <p>
+                                <em>Q: Will you add this feature?</em><br>
+                                <strong>A:</strong> Add it to the <a href="suggestions.html" class="sug-link">Suggestions</a> list. If it fits PSRP style, I don't see why not.
+                            </p>
+                            <p><em>Q: I use LSPFR, Can i disable the police?</em><br><strong>A:</strong> Yes! Go to your PS.ini and right TRUE for using LSPDFR.</p>
+                            <p><em>Q: My UI is off screen?</em><br><strong>A:</strong> In GTA5 settings, Change resolution to a 16:9 ratio, for example 1920x1080, Save and restart GTA5.</p>
+                            <!-- Add more FAQs as needed -->
+                        </div>
+                    </div>
+                    <div class="Install-Steps">
+                        <ul>
+                            <li> Download the installation package.</li>
+                            <li> Open the downloaded package.</li>
+                            <li> Open the FRESH INSTALL folder.</li>
+                            <li> Open OPENIV and turn on edit mode</li>
+                            <li> Drag PART_1 into OPENIV, Choose Game folder</li>
+                            <li> Drag PART_2 into OPENIV, Choose Mods folder</li>
+                        </ul>
+                    </div>
+                    <p>Installation Video.</p>
+                    <div class="video-wrapper" style="display: flex; justify-content: center; margin-top: 30px;">
+                        <iframe width="980"
+                                height="550"
+                                src="https://www.youtube.com/embed/30GMvJoCEN8"
+                                title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                                style="border-radius: 16px; border: 4px solid #03A8FF; overflow: hidden;">
+                        </iframe>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="row">
+        <div class="about-col">
+            <h2>Inventory System</h2>
+            <p>
+                The inventory system serves as the foundation of a richer, more immersive roleplay experience. It allows players to seamlessly buy,
+                collect, trade, and sell a wide variety of items across a dynamic range of locations — from bustling shops and corner stores to quirky hotdog stands and vibrant fruit stalls tucked
+                throughout the city. Every item carries purpose: players can eat to satisfy hunger, drink to stay hydrated, smoke to relax, or use medical supplies to recover health. For those looking
+                to take things further, the system even supports effects like getting high or drunk, influencing behavior and interactions in realistic, often unpredictable ways. With these features,
+                every in-game choice feels impactful, and every encounter adds new layers of depth to your story.
+            </p>
+        </div>
+        <div class="about-col">
+            <img src="images/inventory.png" alt="Inventory system preview" loading="lazy" />
+        </div>
+    </section>
+
+    <section class="row">
+        <div class="about-col">
+            <img src="images/inventory.png" alt="Vehicle saved in a neighborhood" loading="lazy" />
+        </div>
+        <div class="about-col">
+            <h2>Vehicle Persistence System</h2>
+            <p>
+                The vehicle saving system brings persistence and realism to your gameplay. Whether you park outside your house or leave your ride hidden in an alley, the system remembers your vehicle’s
+                exact position and condition across sessions — ensuring it stays right where you left it, even after logging out or restarting.
+                <br><br>
+                In addition to this core functionality, the system includes seamless door locking and unlocking controls, giving you full ownership and security over your vehicle at all times. It's designed
+                to be lightweight, intuitive, and fully integrated with the rest of the world, making it incredibly easy to use even for new players. Whether you're storing your personal car, fleeing a scene,
+                or just roleplaying ownership, this system enhances immersion without adding unnecessary complexity.
+            </p>
+        </div>
+    </section>
+
+    <section class="row">
+        <div class="about-col">
+            <h2>Police System</h2>
+            <p>
+                The Police System adds a layer of realism to your driving experience. Officers can pull you over for offenses like using a mobile phone, speeding, or driving with a suspended license, as well as more
+                serious violations such as driving under the influence or engine smoking. If you accumulate five violations, your driver’s license will be revoked, and your vehicle will be impounded. To retrieve
+                it, you’ll need to pay a fine, and if you wait too long, your car could be permanently taken. During a traffic stop, a custom pull-over cutscene allows you to interact with the officer, where you can
+                either accept the ticket and comply, or attempt to escape — but doing so increases the risk of harsher penalties. If caught with drugs or illegal money, the police will confiscate it. Your actions
+                behind the wheel have real consequences, and how you handle the situation will determine whether you pay fines or lose your car for good.
+            </p>
+        </div>
+        <div class="about-col">
+            <img src="images/inventory.png" alt="Police interaction in GTA5" loading="lazy" />
+        </div>
+    </section>
+
+    <section class="row">
+        <div class="about-col">
+            <img src="images/inventory.png" alt="Fueling vehicle at gas station" loading="lazy" />
+        </div>
+        <div class="about-col">
+            <h2>Fuel Persistence System</h2>
+            <p>
+                The fuel persistence system introduces a new layer of realism and strategy to vehicle management. Only fuel-dependent vehicles now consume gas, while electric and non-fuel vehicles remain unaffected,
+                offering players more variety and tactical choices in transportation. Scattered across the map, newly added gas stations bring life to the streets and serve as critical refueling points. With dynamically
+                balanced and realistic fuel prices, players must plan their routes and manage their in-game finances carefully. Whether you're on a long road trip or escaping a high-stakes chase, keeping an eye on your fuel
+                level is now more important than ever — adding tension, immersion, and authenticity to every journey.
+            </p>
+        </div>
+    </section>
+
+    <section class="row">
+        <div class="about-col">
+            <h2>Ped Creation System</h2>
+            <p>
+                The Character Creation System brings a fully customizable, GTA Online-style experience to life, giving players the tools to craft their unique identity from the ground up. Build your MP ped with precision
+                — from facial features and hairstyles to clothing and accessories — and step into the world with a look that’s entirely your own. Newly opened clothing stores and barber shops across the city offer endless options
+                for personal style, while a functional money and banking system gives your character true financial independence. Working ATMs make it easy to manage your cash flow, whether you're shopping, saving, or just trying
+                to stay off the radar. You can also save and load multiple outfits, allowing you to switch looks on the fly for different occasions. This system isn’t just about appearance — it’s about creating a character that feels
+                alive and grounded in a living, breathing world.
+            </p>
+        </div>
+        <div class="about-col">
+            <img src="images/inventory.png" alt="Character customization screen" loading="lazy" />
+        </div>
+    </section>
+
+    <section class="row">
+        <div class="about-col">
+            <img src="images/inventory.png" alt="Player controlling car features" loading="lazy" />
+        </div>
+        <div class="about-col">
+            <h2>Car Control System</h2>
+            <p>
+                The Car Control System gives players full command over their vehicles, bringing depth, realism, and immersion to every drive. With intuitive controls, you can open and close doors, roll windows up or down, pop the hood,
+                or access the trunk — perfect for roleplay scenarios and vehicle inspections. Buckle up with a working seatbelt system that enhances safety and immersion, especially during high-speed pursuits or collisions. Players can start
+                or shut off their engine manually, activate cruise control for long drives, and rely on automatic turn signals that respond to steering direction. The custom speedometer UI offers a sleek, modern interface that displays speed,
+                fuel, gear, and more at a glance, ensuring you're always in control. Whether you're cruising the city streets or preparing for a tactical getaway, this system makes every moment behind the wheel feel responsive, realistic, and alive.
+            </p>
+        </div>
+    </section>
+
+    <section class="row">
+        <div class="about-col">
+            <h2>The Black Market</h2>
+            <p>
+                The Black Market is your go-to source for all things illegal, offering a hidden world of underground deals for those willing to step outside the law. Whether you're looking for high-powered firearms, rare weapons, or ammunition,
+                the Black Market has everything you need to arm yourself for any situation. Operating in the shadows, this secretive network allows you to purchase guns and ammo that can't be found in regular stores, offering everything from handguns
+                to assault rifles — all at a price. But be cautious: these transactions are off the grid, and the wrong move could bring unwanted attention from both law enforcement and rival criminals. It's a world of risk and reward, where trust is scarce,
+                and deals are made under the cover of darkness. Navigate carefully, because in the Black Market, anything goes.
+            </p>
+        </div>
+        <div class="about-col">
+            <img src="images/inventory.png" alt="Black market menu" loading="lazy" />
+        </div>
+    </section>
+
+    <section class="row">
+        <div class="about-col">
+            <img src="images/inventory.png" alt="Survival status UI" loading="lazy" />
+        </div>
+        <div class="about-col">
+            <h2>Survival Elements</h2>
+            <p>
+                In the unforgiving and hostile world of GTA5, survival is more than just a game — it's a constant struggle.  As hunger and dehydration can quickly turn into life-threatening issues.
+                You’ll need to manage your hunger and hydration levels meticulously to ensure you don't suffer from debilitating effects that can drastically impact your health, stamina, and even your ability to think clearly. A few missteps can lead
+                to dizziness, weakness, or worse, leaving you vulnerable to the dangers around you.
+                <br><br>
+                Throughout the sprawling city, there are countless places to keep your belly full and your thirst quenched. Whether you're picking up a meal from a bustling grocery store, grabbing a quick snack at a hot dog stand, or purchasing refreshing
+                drinks from a local fruit vendor, you'll need to keep an eye out for these essential resources. Each location offers a unique opportunity to stock up, and staying prepared is key.
+            </p>
+        </div>
+    </section>
+
+    <section class="row">
+        <div class="about-col">
+            <h2>DMV Center</h2>
+            <p>
+                The DMV system in GTA5 adds a layer of realism and immersion, allowing players to obtain their driving licenses through both theory and practical tests. Whether you're looking to drive a car, ride a bike, or operate a truck, you'll need
+                to pass specific tests that mirror the challenges real drivers face. The custom-made theory tests cover essential topics like traffic laws, road signs, and safe driving practices, ensuring you're well-prepared for your practical exam.
+                <br><br>
+                The practical driving tests are just as rigorous. You'll be required to demonstrate your skills on the road, proving that you can handle your vehicle under various conditions. Whether it's navigating through busy streets in a car, handling
+                tight corners on a bike, or managing the size and weight of a truck, each test is designed to challenge your ability to operate different types of vehicles safely..
+            </p>
+        </div>
+        <div class="about-col">
+            <img src="images/inventory.png" alt="DMV test interface" loading="lazy" />
+        </div>
+    </section>
+
+    <section class="row">
+        <div class="about-col">
+            <img src="images/inventory.png" alt="Job and activity options" loading="lazy" />
+        </div>
+        <div class="about-col">
+            <h2>Built-In Jobs / Activities</h2>
+            <p>
+                PSRP offers a wide variety of jobs and activities, each with unique rewards and challenges. For those who enjoy a more laid-back lifestyle, fishing allows you to catch and sell different types of fish, while hunting lets you gather pelts and meat from animals. These activities are perfect for making money while exploring the world at your own pace. If you prefer a riskier approach, drug dealing gives you the opportunity to work the underground market, but be ready for the dangers and consequences that come with it.
+                <br><br>
+                For those looking for more traditional work, Bolt (Uber) lets you earn money by picking up passengers and driving them around the city, while truck driving involves transporting goods across the map, testing your navigation skills and stamina. Another option is selling scrap, where you collect discarded materials and sell them for cash, turning junk into profit. Each of these jobs provides a different way to earn money and offers a fresh experience, adding depth to the world of GTA5.
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footerContainer">
+            <div class="socialIcons">
+                <a href=""><i class="fa-brands fa-discord"></i></a>
+                <a href=""><i class="fa-brands fa-tiktok"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+                <a href=""><i class="fa-brands fa-patreon"></i></a>
+            </div>
+        </div>
+        <div class="footerBottom">
+            <p>Copyright &copy;2025: Designed by <span class="designer">JMC MODS</span></p>
+        </div>
+    </footer>
+    <button id="backToTop" title="Go to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    <script>
+        const backToTopButton = document.getElementById("backToTop");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add("show");
+            } else {
+                backToTopButton.classList.remove("show");
+            }
+        });
+
+        backToTopButton.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
+    <script>
+        function openFAQ() {
+            document.getElementById('faqOverlay').style.display = 'flex';
+        }
+
+        function closeFAQ() {
+            document.getElementById('faqOverlay').style.display = 'none';
+        }
+    </script>
+
+    <!-- Modal for Patch Notes -->
+    <div id="patchNotesModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <h2>Patch Notes</h2>
+            <div class="patch-notes-list">
+                <ul>
+                    <li><strong>v1.8 : </strong> Added new taxi contact for travel.</li>
+                    <li><strong>v1.8 : </strong> Added auto repair option without resetting fuel.</li>
+                    <li><strong>v1.8 : </strong> Added ability to change food/drink drain rate.</li>
+                    <li><strong>v1.8 : </strong> Added ability to turn On/Off auto indicators.</li>
+                    <li><strong>v1.8 : </strong> Added cool down for police when you enter vehicles</li>
+                    <li><strong>v1.8 : </strong> Fixed kph odometer bug.</li>
+                    <li><strong>v1.8 : </strong> Fixed stuck in room glitch on MP ped creation.</li>
+                    <li><strong>v1.8 : </strong> Fixed vehicles duplicating on script reload</li>
+                    <!-- Add more patch notes here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        const patchNotesBtn = document.querySelector('.download-btn.secondary');
+        const modal = document.getElementById('patchNotesModal');
+        const closeBtn = document.getElementById('closeModal');
+
+        patchNotesBtn.addEventListener('click', () => {
+            modal.style.display = 'flex';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Close modal when clicking outside modal content
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+       <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+        let userSignedIn = false;
+
+        // Set cookie helper (expires in days)
+        function setCookie(name, value, days) {
+            const expires = new Date(Date.now() + days * 864e5).toUTCString();
+            document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/';
+        }
+
+        // Get cookie helper
+        function getCookie(name) {
+            return document.cookie.split('; ').reduce((r, v) => {
+                const parts = v.split('=');
+                return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+            }, '');
+        }
+
+        // Google Sign-In callback
+        function handleCredentialResponse(response) {
+            console.log('Google sign-in response:', response);
+            const base64Url = response.credential.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(
+                atob(base64)
+                    .split('')
+                    .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+                    .join('')
+            );
+            const userObject = JSON.parse(jsonPayload);
+
+            userSignedIn = true;
+
+            // Save cookies for 7 days
+            setCookie('userSignedIn', 'true', 7);
+            setCookie('userProfile', JSON.stringify(userObject), 7);
+
+            // Enable submit button
+            const submitBtn = document.getElementById('submitBtn');
+            if (submitBtn) submitBtn.disabled = false;
+
+            // Show user pic in header cta div
+            const ctaDiv = document.querySelector('.cta');
+            if (ctaDiv) {
+                ctaDiv.style.display = 'flex';
+               ctaDiv.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
+                    <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
+                </div>
+            `;
+                            ctaDiv.style.cursor = 'default';
+            }
+            const signOutBtn = document.getElementById('signOutBtn').addEventListener('click', signOut);
+            if (signOutBtn) {
+                signOutBtn.style.display = 'inline-block';
+                signOutBtn.addEventListener('click', signOut);
+            }
+        }
+
+        window.onload = () => {
+            const signedInCookie = getCookie('userSignedIn');
+            const profileCookie = getCookie('userProfile');
+
+           if (signedInCookie === 'true' && profileCookie) {
+    userSignedIn = true;
+    const submitBtn = document.getElementById('submitBtn');
+    if (submitBtn) submitBtn.disabled = false;
+
+    const userObject = JSON.parse(profileCookie);
+    const ctaDiv = document.querySelector('.cta');
+    if (ctaDiv) {
+        ctaDiv.style.display = 'flex';
+        ctaDiv.style.cursor = 'default';
+        ctaDiv.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
+                <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
+            </div>
+        `;
+        document.getElementById('signOutBtn').addEventListener('click', signOut);
+    }
+            } else {
+                // Initialize Google Sign-In button
+                google.accounts.id.initialize({
+                    client_id: '387205003521-n7amkkkb0k1p6n3s46br9kglr027j9oj.apps.googleusercontent.com',  // Replace this!
+                    callback: handleCredentialResponse,
+                    auto_select: false
+                });
+
+                google.accounts.id.renderButton(
+                    document.querySelector('.cta'),
+                    {
+                        theme: "outline",
+                        shape: "icon",
+                        size: "large"
+                    }
+                );
+
+                const submitBtn = document.getElementById('submitBtn');
+                if (submitBtn) submitBtn.disabled = true;
+            }
+
+            // Prevent submit if not signed in
+            const form = document.getElementById('suggestionForm');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    if (!userSignedIn) {
+                        e.preventDefault();
+                        alert('Please sign in to submit your suggestion.');
+                    }
+                });
+            }
+
+            // Character count for textarea
+            const messageInput = document.getElementById('message');
+            const charCount = document.getElementById('charCount');
+            if (messageInput && charCount) {
+                messageInput.addEventListener('input', () => {
+                    charCount.textContent = `${messageInput.value.length}/500 characters`;
+                });
+            }
+        };
+        function signOut() {
+    // Clear cookies
+    setCookie('userSignedIn', '', -1);
+    setCookie('userProfile', '', -1);
+
+    userSignedIn = false;
+
+    // Reset UI
+    const ctaDiv = document.querySelector('.cta');
+    if (ctaDiv) {
+        ctaDiv.innerHTML = ''; // Clear current user image or button
+        google.accounts.id.renderButton(ctaDiv, {
+            theme: "outline",
+            shape: "icon",
+            size: "large"
+        });
+    }
+
+    const submitBtn = document.getElementById('submitBtn');
+    if (submitBtn) submitBtn.disabled = true;
+
+    const signOutBtn = document.getElementById('signOutBtn');
+    if (signOutBtn) signOutBtn.style.display = 'none';
+}
+
+    </script>
+</body>
+</html>

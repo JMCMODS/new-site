@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Project Santos RP</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="bodyStaff">
+    <header>
+        <img class="logo" src="images/logo.png" alt="logo" />
+        <nav>
+            <ul class="nav_links">
+                <li><a href="index.html"><i class="fas fa-home" style="margin-right: 8px;"></i>Home</a></li>
+                <li><a href="download.html"><i class="fas fa-download" style="margin-right: 8px;"></i>Download</a></li>
+                <li><a href="suggestions.html"><i class="fas fa-lightbulb" style="margin-right: 8px;"></i>Suggestions</a></li>
+                <li><a href="staff.html"><i class="fas fa-users" style="margin-right: 8px;"></i>The Team</a></li>
+                <li><a href="media.html"><i class="fas fa-photo-film" style="margin-right: 8px;"></i>Media</a></li>
+                <li><a href="support.html"><i class="fas fa-heart" style="margin-right: 8px;"></i>Support</a></li>
+            </ul>
+        </nav>
+        <div class="cta"></div>
+    </header>
+
+
+
+
+    <section class="mob-header">
+        <nav>
+            <div class="mob-links" id="mobLinks">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> </a></li>
+                    <li><a href="download.html"><i class="fas fa-download"></i></a></li>
+                    <li><a href="suggestions.html"><i class="fas fa-lightbulb"></i> </a></li>
+                    <li><a href="staff.html"><i class="fas fa-users"></i> </a></li>
+                    <li><a href="media.html"><i class="fas fa-photo-film"></i> </a></li>
+                    <li><a href="support.html"><i class="fas fa-heart"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+    <section class="main-section">
+
+
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>Submit Suggestions<br><br>Please check if your suggestion <br> is already listed below.<br><br>Thankyou for contributing</h2>
+            <div class="form-container">
+              <form id="suggestionForm" action="https://script.google.com/macros/s/AKfycbzLf7shgO6D-6xMwWaa4etvKn-TBB-jmq4xWc8tS4T3zJD5xbnI1sTRW2mV0bTvKayy/exec" method="post">
+               <input type="text" name="name" id="nameInput" placeholder="Your Name" required maxlength="50" readonly>
+                    <input type="text" name="suggestion" placeholder="Your Suggestion" required maxlength="100">
+                    <textarea name="message" placeholder="Description" rows="5" required maxlength="500" id="message"></textarea>
+                    <p id="charCount">0/500 characters</p>
+                    <button id="submitBtn" type="submit" disabled>Submit</button>
+                </form>
+                <p id="formStatus" style="margin-top:10px;"></p>  <!-- Confirmation message here -->
+            </div>
+        </div>
+
+        <!-- Suggestion List Section -->
+        <div class="suggestion-list-section">
+            <h2>Previous Suggestions</h2>
+            <div id="suggestionList" class="suggestion-list">
+                Loading suggestions...
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="footerContainer">
+            <div class="socialIcons">
+                <a href=""><i class="fa-brands fa-discord"></i></a>
+                <a href=""><i class="fa-brands fa-tiktok"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+                <a href=""><i class="fa-brands fa-patreon"></i></a>
+            </div>
+        </div>
+        <div class="footerBottom">
+            <p>Copyright &copy;2025: Designed by <span class="designer">JMC MODS</span></p>
+        </div>
+    </footer>
+
+    <script>
+        function openModal(src) {
+            document.getElementById('modal-img').src = src;
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+    </script>
+
+
+
+    <script>
+
+
+        var navLinks = document.getElementById("navLinks");
+
+        function showMenu() {
+            navLinks.style.right = "0";
+        }
+        function hideMenu() {
+            navLinks.style.right = "-200px";
+        }
+
+        // Function to update character count
+        function updateCounter() {
+            const message = document.getElementById('message');
+            const charCount = document.getElementById('charCount');
+            charCount.textContent = `${message.value.length}/500 characters`;
+        }
+
+        // Form submission handler
+        let canSubmit = true;
+
+        document.getElementById('suggestionForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            if (!canSubmit) {
+                alert("Please wait before submitting another suggestion.");
+                return;
+            }
+
+            canSubmit = false;
+
+            const form = e.target;
+            const data = new FormData(form);
+            data.append('googleId', getCookie('googleId'));
+            const submitButton = form.querySelector('button[type="submit"]');
+
+            // Disable button and show waiting text
+            submitButton.disabled = true;
+            submitButton.textContent = 'Please wait...';
+
+            fetch('https://script.google.com/macros/s/AKfycbzLf7shgO6D-6xMwWaa4etvKn-TBB-jmq4xWc8tS4T3zJD5xbnI1sTRW2mV0bTvKayy/exec', {
+                method: 'POST',
+                body: data
+            })
+                .then(response => response.text())
+                .then(result => {
+    if (result.includes("banned")) {
+        document.getElementById('formStatus').textContent = "You are banned from submitting suggestions.";
+        submitButton.disabled = false;
+        submitButton.textContent = 'Submit';
+        return;
+    }
+
+    document.getElementById('formStatus').textContent = "Thank you for your suggestion!";
+    form.reset();
+
+    // After reset, refill the name input
+    const nameInput = form.querySelector('input[name="name"]');
+    if (nameInput) {
+        const firstName = getCookie('userFirstName') || '';
+        nameInput.value = firstName;
+    }
+
+    document.getElementById('charCount').textContent = "0/500 characters";
+
+    submitButton.disabled = false;
+    submitButton.textContent = 'Submit';
+
+    loadSuggestions();
+})
+                .catch(error => {
+                    document.getElementById('formStatus').textContent = "Submission failed. Please try again.";
+                    console.error("Error:", error);
+
+                    // Re-enable button and reset text even on error
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Submit';
+                });
+
+            // Prevent further submissions for 60 seconds
+            setTimeout(() => {
+                canSubmit = true;
+            }, 60000);
+        });
+
+        // Function to load and render previous suggestions
+        function loadSuggestions() {
+    fetch('https://script.google.com/macros/s/AKfycbzLf7shgO6D-6xMwWaa4etvKn-TBB-jmq4xWc8tS3zJD5xbnI1sTRW2mV0bTvKayy/exec')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('suggestionList');
+            container.innerHTML = ''; // Clear any existing content
+
+            if (!data.suggestions || data.suggestions.length === 0) {
+                container.textContent = "No suggestions yet.";
+                return;
+            }
+
+            data.suggestions.forEach(item => {
+                const suggestionCard = document.createElement('div');
+                suggestionCard.classList.add('suggestion-card');
+
+                suggestionCard.innerHTML = `
+                    <div class="suggestion-card-header">
+                        <h3>${item.name}</h3>
+                    </div>
+                    <div class="suggestion-title">
+                        Suggestion: ${item.suggestion}
+                    </div>
+                    <p>Description: ${item.message}</p>
+                `;
+
+                container.appendChild(suggestionCard);
+            });
+        })
+        .catch(error => {
+            document.getElementById('suggestionList').textContent = "Failed to load suggestions.";
+            console.error("Error loading suggestions:", error);
+        });
+}
+
+        // Load suggestions on page load
+        document.addEventListener('DOMContentLoaded', loadSuggestions);
+    </script>
+
+      <script src="https://accounts.google.com/gsi/client" async defer></script>
+   <script>
+  let userSignedIn = false;
+
+  // Set cookie helper (expires in days)
+  function setCookie(name, value, days) {
+    const expires = new Date(Date.now() + days * 864e5).toUTCString();
+    document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/';
+  }
+
+  // Get cookie helper
+  function getCookie(name) {
+    return document.cookie.split('; ').reduce((r, v) => {
+      const parts = v.split('=');
+      return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+    }, '');
+  }
+
+  // Google Sign-In callback
+  function handleCredentialResponse(response) {
+    const base64Url = response.credential.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split('')
+        .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+        .join('')
+    );
+    const userObject = JSON.parse(jsonPayload);
+
+    userSignedIn = true;
+    setCookie('userSignedIn', 'true', 7);
+    setCookie('userProfile', JSON.stringify(userObject), 7);
+    setCookie('userFirstName', userObject.given_name, 7);
+    setCookie('googleId', userObject.sub, 7);
+
+    updateUIForSignedInUser(userObject);
+  }
+
+  // Update UI after sign in
+  function updateUIForSignedInUser(userObject) {
+    // Fill name input
+    const nameInput = document.getElementById('nameInput');
+    if (nameInput) {
+      nameInput.value = userObject.given_name || '';
+      nameInput.readOnly = true; // keep readonly if desired
+    }
+
+    // Enable submit button
+    const submitBtn = document.getElementById('submitBtn');
+    if (submitBtn) submitBtn.disabled = false;
+
+    // Show user pic + sign out button
+    const ctaDiv = document.querySelector('.cta');
+    if (ctaDiv) {
+      ctaDiv.style.display = 'flex';
+      ctaDiv.style.cursor = 'default';
+      ctaDiv.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
+          <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
+        </div>
+      `;
+
+      // Add sign out button listener after inserted
+      document.getElementById('signOutBtn').addEventListener('click', signOut);
+    }
+  }
+
+  // Sign out function
+  function signOut() {
+    setCookie('userSignedIn', '', -1);
+    setCookie('userProfile', '', -1);
+    setCookie('userFirstName', '', -1);
+    setCookie('googleId', '', -1);
+
+    userSignedIn = false;
+
+    // Reset UI
+    const ctaDiv = document.querySelector('.cta');
+    if (ctaDiv) {
+      ctaDiv.innerHTML = '';
+      google.accounts.id.renderButton(ctaDiv, {
+        theme: "outline",
+        shape: "icon",
+        size: "large"
+      });
+    }
+
+    const submitBtn = document.getElementById('submitBtn');
+    if (submitBtn) submitBtn.disabled = true;
+
+    const nameInput = document.getElementById('nameInput');
+    if (nameInput) {
+      nameInput.value = '';
+      nameInput.readOnly = false; // if you want to allow editing when signed out
+    }
+  }
+
+  // Load suggestions function (already in your code)
+
+  // Initialize on page load
+  window.onload = () => {
+    // Load suggestions
+    loadSuggestions();
+
+    // Restore sign-in state from cookies
+    const signedInCookie = getCookie('userSignedIn');
+    const profileCookie = getCookie('userProfile');
+
+    if (signedInCookie === 'true' && profileCookie) {
+      userSignedIn = true;
+      const userObject = JSON.parse(profileCookie);
+      updateUIForSignedInUser(userObject);
+    } else {
+      // Initialize Google sign-in button
+      google.accounts.id.initialize({
+        client_id: '387205003521-n7amkkkb0k1p6n3s46br9kglr027j9oj.apps.googleusercontent.com',  // Replace this with your own client ID
+        callback: handleCredentialResponse,
+        auto_select: false
+      });
+
+      google.accounts.id.renderButton(
+        document.querySelector('.cta'),
+        {
+          theme: "outline",
+          shape: "icon",
+          size: "large"
+        }
+      );
+
+      // Disable submit button if not signed in
+      const submitBtn = document.getElementById('submitBtn');
+      if (submitBtn) submitBtn.disabled = true;
+    }
+
+    // Character count setup
+    const messageInput = document.getElementById('message');
+    const charCount = document.getElementById('charCount');
+    if (messageInput && charCount) {
+      charCount.textContent = `${messageInput.value.length}/500 characters`;
+      messageInput.addEventListener('input', () => {
+        charCount.textContent = `${messageInput.value.length}/500 characters`;
+      });
+    }
+
+    // Prevent form submission if not signed in
+    const form = document.getElementById('suggestionForm');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        if (!userSignedIn) {
+          alert('Please sign in to submit your suggestion.');
+          return;
+        }
+
+        // Disable submit button to prevent rapid submits
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Please wait...';
+        }
+
+        // Prepare form data with googleId from cookie
+        const formData = new FormData(form);
+        formData.append('googleId', getCookie('googleId'));
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+          });
+
+          const contentType = response.headers.get("content-type");
+          if (!contentType || !contentType.includes("application/json")) {
+            const text = await response.text();
+            alert("⚠️ Server did not return JSON:\n" + text);
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Submit';
+            }
+            return;
+          }
+
+          const json = await response.json();
+
+          if (json.status === "banned") {
+            alert("🚫 You are banned from submitting suggestions.");
+          } else if (json.status === "success") {
+            alert("✅ Suggestion submitted successfully!");
+            form.reset();
+            document.getElementById('charCount').textContent = "0/500 characters";
+            // Refill name from cookie
+            const nameInput = form.querySelector('input[name="name"]');
+            if (nameInput) nameInput.value = getCookie('userFirstName') || '';
+            loadSuggestions();
+          } else if (json.status === "error") {
+            alert("❌ Server error: " + json.message);
+          } else {
+            alert("⚠️ Unexpected server response.");
+          }
+        } catch (err) {
+          console.error("Error submitting form:", err);
+          alert("⚠️ Submission failed due to a network or server error.");
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit';
+          }
+        }
+      });
+    }
+  };
+</script>
+
+</script>
+</body>
+</html>
