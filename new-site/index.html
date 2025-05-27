@@ -40,6 +40,8 @@
                 </ul>
             </div>
         </nav>
+        <div class="cta"></div>
+        <button id="signOutBtn" style="display:none; margin-left: 10px;">Sign Out</button>
     </section>
 
 
@@ -49,7 +51,7 @@
     </video>
     
     <section class="hero-section">
-       
+
         <div class="typing-container">
             <p id="line1"></p>
             <p id="line2"></p>
@@ -58,15 +60,25 @@
             <p id="line5"></p>
         </div>
 
-    <div class="typing-container2">
-        <h2>
-            Developed By JMC MODS<br />
-            Designed For Single-Player<br />
-            Super Easy Installation Process<br />
-            Actively Updated And Maintained<br />
-            Active Support Team If You Need Help,
-        </h2>
-    </div>
+        <div style="text-align: center; margin: 20px 0;">
+            <button id="actionButton" style="padding: 10px 20px; font-size: 16px; cursor: pointer;"
+                    onclick="window.location.href='download.html'">
+                Learn More About PSRP
+            </button>
+        </div>
+
+
+        <div class="typing-container2">
+            <h2>
+                Developed By JMC MODS<br />
+                Designed For Single-Player<br />
+                Super Easy Installation Process<br />
+                Actively Updated And Maintained<br />
+                Active Support Team If You Need Help,
+            </h2>
+        </div>
+
+
     </section>
     <!--
 
@@ -165,7 +177,15 @@
             }, 1); // Initial 10s black screen
         });
     </script>
-
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const container = document.querySelector('.typing-container');
+                container.classList.remove('hidden-background');
+                container.classList.add('visible-background');
+            }, 14000); // 15 seconds
+        });
+    </script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
         let userSignedIn = false;

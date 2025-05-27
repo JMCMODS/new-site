@@ -1218,6 +1218,7 @@ h2 {
     margin-right: 15%;
     background:none;
     padding-top: 1%;
+    font-size: 1.8rem;
 
 }
 
@@ -1543,9 +1544,11 @@ span {
     .cta-container p {
         font-size: 15px;
         margin-top: -10% !important;
+        padding-bottom: 5%;
     }
     .cta-container h2 {
         font-size: 25px !important;
+        padding-bottom: 2%;
     }
     .cta-btn {
         width: 100%;
@@ -1564,7 +1567,7 @@ span {
         background: black;
     }
     .team-section h2{
-        font-size: 20px!important;
+        font-size: 40px!important;
     }
     .team-section p {
         font-size: 20px !important;
@@ -1750,6 +1753,12 @@ span {
             .suggest-buttons button i {
                 font-size: 1em;
             }
+            .main-section{
+                padding-top: 2%;
+            }
+            .form-section h2{
+                font-size: 1.8rem;
+            }
 }
 @media screen and (max-width:720px) {
     .requirement-item {
@@ -1824,45 +1833,39 @@ span {
         text-align: center;
     }
 }
-@media screen and (max-width:1200px) {
-    .typing-container {
-        right: 10%;
-        font-size: 2rem;
+@media screen and (max-width: 1200px)
+{
+    .main-section {
+        padding-top: 10%!important;
     }
-    .bg{
-        display:flex;
-        right: 50%!important;
-    }
-    .row {
-        display: none;
-    }
-    .form-section h2 {
-        font-size: 2rem;
-    }
-    .typing-container{
-        left:1%;
-    }
-    .support-content h1 {
-        font-size: 5.5rem !important;
-    }
-
-    .support-content p {
-        font-size: 2rem !important;
+    .cta-container h2 {
+        padding-top: 100px; /* extra space for easier scrolling */
+        background: black;
     }
 }
 @media screen and (max-width: 768px) {
     .hero-section {
         padding: 1rem;
-        flex-direction: column;
+        flex-direction: column-reverse;
         justify-content: center;
+        bottom: 50%!important;
+    }
+   
+    .main-section {
+    }
+    .typing-container p {
+        font-size: 1rem;
     }
 
-    .typing-container {
-        font-size: 1.2rem;
-        padding: 1rem;
-        width: 90%;
+    #actionButton {
+        width: 100%;
+        font-size: 16px;
+        padding: 14px 0;
+        max-width: 300px;
+        display: block;
+        position: relative;
+        margin-top: 0% !important;
     }
-
         .typing-container p {
             margin: 0.4rem 0;
         }
@@ -2085,5 +2088,36 @@ header {
     font-size: 1rem;
     color: white;
 }
+
+#actionButton {
+    background: linear-gradient( 270deg, #0caadc, #0078d7, #00aaff, #0099ff, #0078d7, #0caadc );
+    background-size: 600% 600%;
+    animation: gradientAnimation 8s ease infinite;
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 12px 30px; /* Comfortable padding */
+    padding-top: 10%;
+    font-size: 2rem !important; /* Easy-to-read font size */
+    font-weight: 600; /* Slightly bold */
+    cursor: pointer; /* Pointer on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soft shadow */
+    z-index: 999 !important;
+    position: relative;
+    margin-top: 120%;
+}
+
+    #actionButton:hover {
+        transform: scale(1.05); /* Slight lift effect */
+        background: linear-gradient( 270deg,#00ff15,#beff00,#00ff15);
+        background-size: 600% 600%;
+        animation: gradientAnimation 8s ease infinite;
+    }
+
+    #actionButton:active {
+        background-color: #00408d; /* Even darker when pressed */
+        transform: translateY(0); /* Return to normal */
+    }
 
   
