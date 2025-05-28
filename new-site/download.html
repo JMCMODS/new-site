@@ -571,9 +571,11 @@
     <script>
         function downloadFile() {
             const link = document.createElement('a');
-            link.href = '/Downloads/myfile.pdf'; // replace with your file path
-            link.download = 'myfile.pdf'; // optional: specify filename
+            link.href = '/downloads/PSRP_1.8.0.rar'; // ensure the path matches your deployed file
+            link.download = 'PSRP_1.8.0.rar';
+            document.body.appendChild(link); // optional for some browsers
             link.click();
+            document.body.removeChild(link); // clean up
         }
     </script>
 </body>
