@@ -115,18 +115,17 @@
                         </p>
                     </div>
                     <div class="buttons-group-download">
-                        <button class="download-btn" onclick="downloadFile()">
+                        <a href="downloads/PSRP.zip" download class="download-btn">
                             <i class="fas fa-download"></i> Download
+                        </a>
+                       
+
+                        <button class="download-btn secondary">
+                            <i class="fas fa-file-alt"></i> Patch Notes
                         </button>
                     </div>
-
-
-                    <button class="download-btn secondary">
-                        <i class="fas fa-file-alt"></i> Patch Notes
-                    </button>
+                    <h2><a href="https://discord.com/invite/V7hHKEZyWm" class="help-link">Click Here To Get Help</a></h2>
                 </div>
-                <h2><a href="https://discord.com/invite/V7hHKEZyWm" class="help-link">Click Here To Get Help</a></h2>
-            </div>
         </div>
         <div class="right-column">
             <div class="box full-box">
@@ -568,15 +567,6 @@
         }
 
     </script>
-    <script>
-        function downloadFile() {
-            const link = document.createElement('a');
-            link.href = '/downloads/PSRP.zip'; // ensure the path matches your deployed file
-            link.download = 'PSRP.zip';
-            document.body.appendChild(link); // optional for some browsers
-            link.click();
-            document.body.removeChild(link); // clean up
-        }
-    </script>
+ 
 </body>
 </html>
