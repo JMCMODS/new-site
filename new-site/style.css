@@ -139,6 +139,7 @@ footer {
     display: flex;
     justify-content: center;
     z-index: 999;
+    gap: 20px;
 }
     .socialIcons a {
         text-decoration: none;
@@ -154,11 +155,10 @@ footer {
         }
 .socialIcons a:hover {
     background-color: #111;
-    transition: 0.5s;
+    border: 3px solid white;
 }
 .socialIcons a:hover i {
     color: white;
-    transition: 0.5s;
 }
 .footerNav ul li a:hover {
     opacity: 1;
