@@ -1,2 +1,0 @@
-Place the files here:
-mods\update\update.rpf\x64\data\cdimages\scaleform_generic.rpf\
