@@ -1,0 +1,10 @@
+1. Place PS_2025.dll in scripts
+2. Add these 3 lines below to PS.ini below the [Persistent Settings] section located at scripts/ProjectSantos/Settings
+
+FoodDrainRate = 40000
+DrinkDrainRate = 30000
+Auto Indicators = False
+
+Screenshot provided in update folder shows where to place the 3 lines if you are confused.
+
+Consider Supporting Development: https://www.patreon.com/c/JMCMODS
