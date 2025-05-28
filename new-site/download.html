@@ -115,65 +115,67 @@
                         </p>
                     </div>
                     <div class="buttons-group-download">
-                        <button class="download-btn">
+                        <button class="download-btn" onclick="downloadFile()">
                             <i class="fas fa-download"></i> Download
                         </button>
-
-                        <button class="download-btn secondary">
-                            <i class="fas fa-file-alt"></i> Patch Notes
-                        </button>
                     </div>
-                    <h2><a href="https://discord.com/invite/V7hHKEZyWm" class="help-link">Click Here To Get Help</a></h2>
+
+
+                    <button class="download-btn secondary">
+                        <i class="fas fa-file-alt"></i> Patch Notes
+                    </button>
                 </div>
+                <h2><a href="https://discord.com/invite/V7hHKEZyWm" class="help-link">Click Here To Get Help</a></h2>
             </div>
-            <div class="right-column">
-                <div class="box full-box">
-                    <h2>INSTALLATION</h2>
-                    <p>
-                        Read the <span class="faq-link" onclick="openFAQ()">FAQ</span>.
-                    </p>
+        </div>
+        <div class="right-column">
+            <div class="box full-box">
+                <h2>INSTALLATION</h2>
+                <p>
+                    Read the <span class="faq-link" onclick="openFAQ()">FAQ</span>.
+                </p>
 
-                    <!-- FAQ Overlay -->
-                    <div id="faqOverlay" class="faq-overlay">
-                        <div class="faq-content">
-                            <span class="close-btn" onclick="closeFAQ()">&times;</span>
-                            <h2>Frequently Asked Questions</h2>
-                            <p><em>Q: Is PSRP compatible with GTA5 Enhanced?</em><br><strong>A:</strong> Not currently until we get SHVDN3 support for it.</p>
-                            <p><em>Q: I have white squares for my UI after install?</em><br><strong>A:</strong> Reinstall PART_2, Make sure to choose MODS folder.</p>
-                            <p>
-                                <em>Q: Will you add this feature?</em><br>
-                                <strong>A:</strong> Add it to the <a href="suggestions.html" class="sug-link">Suggestions</a> list. If it fits PSRP style, I don't see why not.
-                            </p>
-                            <p><em>Q: I use LSPFR, Can i disable the police?</em><br><strong>A:</strong> Yes! Go to your PS.ini and right TRUE for using LSPDFR.</p>
-                            <p><em>Q: My UI is off screen?</em><br><strong>A:</strong> In GTA5 settings, Change resolution to a 16:9 ratio, for example 1920x1080, Save and restart GTA5.</p>
-                            <!-- Add more FAQs as needed -->
-                        </div>
-                    </div>
-                    <div class="Install-Steps">
-                        <ul>
-                            <li> Download the installation package.</li>
-                            <li> Open the downloaded package.</li>
-                            <li> Open the FRESH INSTALL folder.</li>
-                            <li> Open OPENIV and turn on edit mode</li>
-                            <li> Drag PART_1 into OPENIV, Choose Game folder</li>
-                            <li> Drag PART_2 into OPENIV, Choose Mods folder</li>
-                        </ul>
-                    </div>
-                    <p>Installation Video.</p>
-                    <div class="video-wrapper" style="display: flex; justify-content: center; margin-top: 30px;">
-                        <iframe width="980"
-                                height="550"
-                                src="https://www.youtube.com/embed/30GMvJoCEN8"
-                                title="YouTube video player"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen
-                                style="border-radius: 16px; border: 4px solid #03A8FF; overflow: hidden;">
-                        </iframe>
+                <!-- FAQ Overlay -->
+                <div id="faqOverlay" class="faq-overlay">
+                    <div class="faq-content">
+                        <span class="close-btn" onclick="closeFAQ()">&times;</span>
+                        <h2>Frequently Asked Questions</h2>
+                        <p><em>Q: Is PSRP compatible with GTA5 Enhanced?</em><br><strong>A:</strong> Not currently until we get SHVDN3 support for it.</p>
+                        <p><em>Q: I have white squares for my UI after install?</em><br><strong>A:</strong> Reinstall PART_2, Make sure to choose MODS folder.</p>
+                        <p>
+                            <em>Q: Will you add this feature?</em><br>
+                            <strong>A:</strong> Add it to the <a href="suggestions.html" class="sug-link">Suggestions</a> list. If it fits PSRP style, I don't see why not.
+                        </p>
+                        <p><em>Q: I use LSPFR, Can i disable the police?</em><br><strong>A:</strong> Yes! Go to your PS.ini and right TRUE for using LSPDFR.</p>
+                        <p><em>Q: My UI is off screen?</em><br><strong>A:</strong> In GTA5 settings, Change resolution to a 16:9 ratio, for example 1920x1080, Save and restart GTA5.</p>
+                        <!-- Add more FAQs as needed -->
                     </div>
                 </div>
-
+                <div class="Install-Steps">
+                    <ul>
+                        <li> Download the installation package.</li>
+                        <li> Open the downloaded package.</li>
+                        <li> Open the FRESH INSTALL folder.</li>
+                        <li> Open OPENIV and turn on edit mode</li>
+                        <li> Drag PART_1 into OPENIV, Choose Game folder</li>
+                        <li> Drag PART_2 into OPENIV, Choose Mods folder</li>
+                    </ul>
+                </div>
+                <p>Installation Video.</p>
+                <div class="video-wrapper" style="display: flex; justify-content: center; margin-top: 30px;">
+                    <iframe width="980"
+                            height="550"
+                            src="https://www.youtube.com/embed/30GMvJoCEN8"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            style="border-radius: 16px; border: 4px solid #03A8FF; overflow: hidden;">
+                    </iframe>
+                </div>
             </div>
+
+        </div>
         </div>
     </section>
     <section class="row">
@@ -417,7 +419,7 @@
             }
         });
     </script>
-          <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
         let userSignedIn = false;
 
@@ -463,11 +465,11 @@
             if (ctaDiv) {
                 ctaDiv.style.display = 'flex';
                 ctaDiv.innerHTML = `
-                                        <div style="display: flex; align-items: center; gap: 10px;">
-                                            <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
-                                            <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
-                                        </div>
-                                    `;
+                                            <div style="display: flex; align-items: center; gap: 10px;">
+                                                <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
+                                                <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
+                                            </div>
+                                        `;
                 ctaDiv.style.cursor = 'default';
             }
             const signOutBtn = document.getElementById('signOutBtn').addEventListener('click', signOut);
@@ -492,11 +494,11 @@
                     ctaDiv.style.display = 'flex';
                     ctaDiv.style.cursor = 'default';
                     ctaDiv.innerHTML = `
-                                    <div style="display: flex; align-items: center; gap: 10px;">
-                                        <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
-                                        <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
-                                    </div>
-                                `;
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <img src="${userObject.picture}" alt="User Image" style="width:32px; height:32px; border-radius:50%;">
+                                            <button id="signOutBtn" style="padding: 6px 10px; font-size: 14px;">Sign Out</button>
+                                        </div>
+                                    `;
                     document.getElementById('signOutBtn').addEventListener('click', signOut);
                 }
             } else {
@@ -565,6 +567,14 @@
             if (signOutBtn) signOutBtn.style.display = 'none';
         }
 
+    </script>
+    <script>
+        function downloadFile() {
+            const link = document.createElement('a');
+            link.href = '/Downloads/myfile.pdf'; // replace with your file path
+            link.download = 'myfile.pdf'; // optional: specify filename
+            link.click();
+        }
     </script>
 </body>
 </html>
