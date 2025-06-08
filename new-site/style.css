@@ -29,6 +29,7 @@ header {
     align-items:center;
     padding: 10px 1%;
     position: relative;
+    padding-bottom: 10%;
 }
 .logo {
     cursor: pointer;
